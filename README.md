@@ -5,5 +5,5 @@ Ansible Playbook for provisioning a Jenkins CI server behind an Nginx proxy on C
 ### Usage
 
 ```
-ansible-playbook -i myserver.example.com jenkins.yml
+ansible-playbook -i hosts jenkins.yml
 ```
