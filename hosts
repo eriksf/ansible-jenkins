@@ -1,0 +1,2 @@
+[ci-server]
+jenkins.sd2e.org ansible_user=centos

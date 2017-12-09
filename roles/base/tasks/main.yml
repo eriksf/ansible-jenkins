@@ -1,0 +1,32 @@
+---
+
+- name: Install security updates
+  yum:
+      security=yes
+      update_cache={{ update_cache }}
+      name=*
+      state=latest
+  tags: packages
+        packages.security
+
+- name: Install EPEL-Release
+  yum: name=epel-release update_cache={{ update_cache }} state=latest
+  tags: packages
+
+- name: Install IUS Repo
+  yum: name=https://centos7.iuscommunity.org/ius-release.rpm
+  tags: packages
+
+- name: Install base packages
+  yum: name={{ item }} update_cache={{ update_cache }} state=installed
+  with_items:
+    - "@Development tools"
+    - ca-certificates
+    - python-setuptools
+    - python-pip
+    - python36u
+    - python36u-devel
+    - python36u-pip
+    - git
+    - glances
+  tags: packages

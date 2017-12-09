@@ -1,0 +1,14 @@
+---
+
+- name: Provision a Jenkins CI server
+  hosts: all
+  become: yes
+  become_user: root
+  remote_user: root
+  vars:
+    - update_cache: yes
+
+  roles:
+    - base
+    - geerlingguy.docker
+    - geerlingguy.java
