@@ -1,0 +1,16 @@
+---
+
+- name: Ensure avahi is installed
+  yum: name={{ item }} update_cache={{ update_cache }} state=installed enablerepo=epel
+  with_items:
+    - avahi
+    - avahi-tools
+    - avahi-compat-libdns_sd
+    - avahi-compat-libdns_sd-devel
+  tags:
+    - avahi
+    - packages
+
+- name: Ensure avahi-daemon is running, and starts on boot
+  service: name=avahi-daemon state=started enabled=yes
+  tags: avahi

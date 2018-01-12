@@ -7,8 +7,12 @@
   remote_user: vagrant
   vars:
     - update_cache: yes
+    - jenkins_url_external: jenkins.local
 
   roles:
     - base
+    - avahi
     - geerlingguy.docker
     - geerlingguy.java
+    - karlmdavis.ansible-role-jenkins2
+    - geerlingguy.nginx
