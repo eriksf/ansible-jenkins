@@ -1,0 +1,28 @@
+---
+
+jenkins_release_line: 'long_term_support'
+jenkins_release_update: false
+jenkins_home: "{{ jenkins_home_default }}"
+jenkins_admin_username: admin
+jenkins_admin_password: admin
+jenkins_admin_email: eferlanti@tacc.utexas.edu
+
+jenkins_plugins_extra:
+  - ansible
+  - blueocean
+  - external-monitor-job
+  - favorite
+  - groovy
+  - icon-shim
+  - job-import-plugin
+  - mailer
+  - maven-plugin
+  - metrics
+  - parameterized-trigger
+  - pegdown-formatter
+  - pubsub-light
+  - run-condition
+  - sse-gateway
+  - slack
+  - testng-plugin
+  - variant

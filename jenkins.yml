@@ -12,5 +12,5 @@
     - base
     - geerlingguy.docker
     - geerlingguy.java
-    - karlmdavis.ansible-role-jenkins2
+    - karlmdavis.jenkins2
     - geerlingguy.nginx

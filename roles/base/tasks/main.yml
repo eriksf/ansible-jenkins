@@ -27,6 +27,7 @@
     - python36u
     - python36u-devel
     - python36u-pip
+    - libsemanage-python
     - git
     - glances
   tags: packages
