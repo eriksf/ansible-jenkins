@@ -1,4 +1,5 @@
 ---
+
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
   when: ansible_distribution != 'Ubuntu' or ansible_distribution != 'Fedora'
@@ -17,17 +18,7 @@
   when: java_packages is not defined
 
 # Setup/install tasks.
-- include: setup-RedHat.yml
-  when: ansible_os_family == 'RedHat'
-  static: no
-
-- include: setup-Debian.yml
-  when: ansible_os_family == 'Debian'
-  static: no
-
-- include: setup-FreeBSD.yml
-  when: ansible_os_family == 'FreeBSD'
-  static: no
+- include_tasks: "setup-{{ ansible_os_family }}.yml"
 
 # Environment setup.
 - name: Set JAVA_HOME if configured.

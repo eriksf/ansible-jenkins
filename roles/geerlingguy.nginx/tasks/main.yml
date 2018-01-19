@@ -9,26 +9,10 @@
   when: nginx_user is not defined
 
 # Setup/install tasks.
-- include: setup-RedHat.yml
-  when: ansible_os_family == 'RedHat'
-
-- include: setup-Ubuntu.yml
-  when: ansible_distribution == 'Ubuntu'
-
-- include: setup-Debian.yml
-  when: ansible_os_family == 'Debian'
-
-- include: setup-FreeBSD.yml
-  when: ansible_os_family == 'FreeBSD'
-
-- include: setup-OpenBSD.yml
-  when: ansible_os_family == 'OpenBSD'
-
-- include: setup-Archlinux.yml
-  when: ansible_os_family == 'Archlinux'
+- include_tasks: "setup-{{ ansible_os_family }}.yml"
 
 # Vhost configuration.
-- include: vhosts.yml
+- include_tasks: vhosts.yml
 
 # Nginx setup.
 - name: Copy nginx configuration in place.
