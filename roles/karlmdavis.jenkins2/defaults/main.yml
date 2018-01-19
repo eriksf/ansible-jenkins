@@ -23,7 +23,7 @@ jenkins_home: "{{ jenkins_home_default }}"
 # Jenkins doesn't (and shouldn't) run as root, so this must be over 1024.
 jenkins_port: 8080
 
-# The context path that Jenkins will be hosted at, e.g. '/foo' in 
+# The context path that Jenkins will be hosted at, e.g. '/foo' in
 # 'http://localhost:8080/foo'. Leave as '' to host at root path.
 jenkins_context_path: ''
 
@@ -32,8 +32,9 @@ jenkins_context_path: ''
 # If this is left empty/None, the configuration will not be set and Jenkins
 # will try to auto-discover this (which won't work correctly if it's proxied).
 jenkins_url_external: ''
+jenkins_url_scheme: 'http'
 
-# The plugins that the Jenkins 2.0 setup wizard installs by default. Currently, 
+# The plugins that the Jenkins 2.0 setup wizard installs by default. Currently,
 # the best place to find this list seems to be in the source, here:
 # https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/jenkins/install/platform-plugins.json
 jenkins_plugins_recommended:
@@ -58,7 +59,7 @@ jenkins_plugins_recommended:
   - email-ext
   - mailer
 
-# The additional plugins that users of this role would like to be installed 
+# The additional plugins that users of this role would like to be installed
 # (must be overridden).
 jenkins_plugins_extra: []
 
