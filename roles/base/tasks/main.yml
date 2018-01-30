@@ -30,6 +30,7 @@
     - libsemanage-python
     - git
     - glances
+    - maven
   tags: packages
 
 - name: Configure SELinux to allow httpd to connect to 127.0.0.1

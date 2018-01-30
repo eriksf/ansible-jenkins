@@ -10,8 +10,14 @@ jenkins_admin_email: eferlanti@tacc.utexas.edu
 jenkins_plugins_extra:
   - ansible
   - blueocean
+  - build-pipeline-plugin
+  - checkstyle
+  - copyartifact
+  - deploy
+  - disk-usage
   - external-monitor-job
   - favorite
+  - greenballs
   - groovy
   - icon-shim
   - job-import-plugin
