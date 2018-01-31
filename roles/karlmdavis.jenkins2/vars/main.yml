@@ -20,6 +20,7 @@ jenkins_plugins_extra:
   - greenballs
   - groovy
   - icon-shim
+  - jobConfigHistory
   - job-import-plugin
   - mailer
   - maven-plugin
