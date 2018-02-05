@@ -1,0 +1,10 @@
+---
+
+- name: install LSB
+  yum:
+    name: redhat-lsb
+    state: latest
+  when: nrinfragent_os_name|lower == 'redhat'
+
+# Install and configure agent
+- include: agent.yml

@@ -30,6 +30,7 @@
     - libsemanage-python
     - git
     - glances
+    - mailx
     - maven
   tags: packages
 
