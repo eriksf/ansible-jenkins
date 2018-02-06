@@ -28,6 +28,7 @@ jenkins_plugins_extra:
   - pegdown-formatter
   - pubsub-light
   - run-condition
+  - shiningpanda
   - sse-gateway
   - slack
   - testng-plugin
