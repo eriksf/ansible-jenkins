@@ -1,0 +1,7 @@
+---
+# vars file for python2
+version: 3.6.1
+checksum: null
+python_dir: /usr/local/opt/python{{ version }}
+reinstall: false
+link: true

@@ -11,3 +11,5 @@
 
 # PyCharm IDE
 .idea
+
+*.tar.gz

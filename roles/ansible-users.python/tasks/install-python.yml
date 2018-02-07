@@ -1,0 +1,33 @@
+---
+- name: Download source of python-{{ version }} from {{ source_url }} to {{ source_tar }}
+  get_url:
+    url: "{{ source_url }}"
+    dest: "{{ source_tar }}"
+    validate_certs: no
+    checksum: "{{ checksum_expect }}"
+  tags:
+    - download
+
+
+- name: Extract source from {{ source_tar }} to /usr/local/src/
+  unarchive:
+    src: "{{ source_tar }}"
+    dest: /usr/local/src/
+    remote_src: True
+
+
+- name: Install requirements for python-{{ version }}
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ require_packages[ansible_os_family] }}"
+
+
+- name: Compile and install python{{ version }}
+  shell: |
+    ./configure --prefix={{ python_dir }}
+    make && make install
+  args:
+    chdir: /usr/local/src/Python-{{ version }}
+    executable: /bin/bash

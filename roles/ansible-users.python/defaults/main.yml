@@ -1,0 +1,77 @@
+---
+# defaults file for python2
+version: 3.6.4
+version_short: "{{ version.split('.')[0] }}.{{ version.split('.')[1] }}"
+python_dir: /usr/local/opt/python{{ version }}
+python_exe: "{{ python_dir }}/bin/python{{ version_short }}"
+pip_exe: "{{ python_dir }}/bin/pip{{ version_short }}"
+
+checksum: null
+checksum_expect: "{{ checksum | default(checksum_defaults[version]) }}"
+reinstall: false
+
+# links of executable file.
+link: true
+python_link: "/usr/local/bin/python{{ version_short }}"
+pip_link:    "/usr/local/bin/pip{{ version_short }}"
+
+# source config
+source_url: https://www.python.org/ftp/python/{{ version }}/Python-{{ version }}.tar.xz
+source_tar: /usr/local/src/Python-{{ version }}.tar.xz
+
+checksum_defaults:
+  # python3.6
+  3.6.4: md5:1325134dd525b4a2c3272a1a0214dd54
+  3.6.3: md5:b9c2c36c33fb89bda1fefd37ad5af9be
+  3.6.2: md5:2c68846471994897278364fc18730dd9
+  3.6.1: md5:692b4fc3a2ba0d54d1495d4ead5b0b5c
+  3.6.0: md5:82b143ebbf4514d7e05876bed7a6b1f5
+
+  # python3.5
+  3.5.4: md5:fb2780baa260b4e51cbea814f111f303
+  3.5.3: md5:57d1f8bfbabf4f2500273fb0706e6f21
+  3.5.2: md5:8906efbacfcdc7c3c9198aeefafd159e
+  3.5.1: md5:e9ea6f2623fffcdd871b7b19113fde80
+  3.5.0: md5:d149d2812f10cbe04c042232e7964171
+
+  # python3.4
+  3.4.7: md5:fba7c150dd2366f9523fa13b88736dea
+
+  # python2.7
+  2.7.14: md5:1f6db41ad91d9eb0a6f0c769b8613c5b
+  2.7.13: md5:53b43534153bb2a0363f08bae8b9d990
+
+
+require_packages:
+  RedHat:
+    # Compile tool chain
+    - gcc
+    - make
+    - automake
+    - autoconf
+
+    # library
+    - readline-devel
+    - sqlite-devel
+    - openssl-devel
+    - ncurses-devel
+    - zlib-devel
+    - bzip2-devel
+    - xz-devel
+    - gdbm-devel
+
+  Debian:
+    # Compile tool chain
+    - gcc
+    - make
+    - automake
+    - autoconf
+
+    # library
+    - libreadline-dev
+    - libsqlite3-dev
+    - libssl-dev
+    - libncurses5-dev
+    - zlib1g-dev
+    - libbz2-dev
+    - libgdbm-dev

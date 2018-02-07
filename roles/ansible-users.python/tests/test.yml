@@ -1,0 +1,45 @@
+---
+
+- name: Test checksum
+  hosts: localtest
+  connection: paramiko
+  tasks:
+    - name: Show version
+      debug: var=version
+      with_items:
+        - "{{ version_list }}"
+
+    - name: "Validate checksum."
+      get_url:
+        url: "{{ source_url }}"
+        dest: "/tmp/Python-{{ version }}"
+        validate_certs: no
+        checksum: "{{ checksum_expect }}"
+        # checksum: "md5:692b4fc3a2ba0d54d1495d4ead5b0b5c"
+      vars:
+        version: "{{ item }}"
+        source_url: http://127.0.0.1:8000/Python-{{ version }}.tar.xz
+      with_items:
+        - "{{ version_list }}"
+
+  vars_files:
+    - ../defaults/main.yml
+  vars:
+    version_list:
+      - 2.7.13
+      - 3.4.6
+      - 3.5.3
+      - 3.6.1
+
+
+- name: Test install python.
+  hosts: localtest
+  connection: paramiko
+  roles:
+    - { role: ../../python, version: "2.7.13", python_dir: "/usr/local/opt/python{{ version }}" }
+    - { role: ../../python, version: "3.4.6",  python_dir: "/usr/local/opt/python{{ version }}" }
+    - { role: ../../python, version: "3.5.3",  python_dir: "/usr/local/opt/python{{ version }}" }
+    - { role: ../../python, version: "3.6.1",  python_dir: "/usr/local/opt/python{{ version }}" }
+
+  vars:
+    # source_url: http://127.0.0.1:8000/Python-{{ version }}.tar.xz

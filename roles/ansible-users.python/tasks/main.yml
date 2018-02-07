@@ -1,0 +1,49 @@
+---
+# tasks file for python
+- name: Install libselinux-python.
+  package: name="libselinux-python" state="present"
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+
+- name: Check status of python-{{ version }}
+  stat:
+    path: "{{ python_exe }}"
+  register: python
+  tags:
+    - link
+    - download
+
+
+- name: Check status of pip-{{ version }}
+  stat:
+    path: "{{ pip_exe }}"
+  register: pip
+  tags:
+    - link
+    - download
+
+
+- name: Force to install python-{{ version }} ? {{ "yes" if reinstall else "no" }}
+  debug: var=reinstall
+  when: python.stat.exists == True
+
+
+- include: "install-python.yml"
+  static: no
+  when: python.stat.exists == False or reinstall
+
+
+- include: "install-pip.yml"
+  static: no
+  when: pip.stat.exists == False or reinstall
+
+
+- include: "link.yml"
+  static: no
+  when: link == True
+
+
+- name: Finish.
+  debug:
+    msg: python-{{ version }} was installed already. @see {{ python_dir }}
+  when: python.stat.exists == True

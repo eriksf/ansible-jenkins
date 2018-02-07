@@ -22,16 +22,12 @@
   with_items:
     - "@Development tools"
     - ca-certificates
-    - python-setuptools
-    - python-pip
-    - python36u
-    - python36u-devel
-    - python36u-pip
     - libsemanage-python
     - git
     - glances
     - mailx
     - maven
+    - wget
   tags: packages
 
 - name: Configure SELinux to allow httpd to connect to 127.0.0.1

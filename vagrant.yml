@@ -11,6 +11,8 @@
 
   roles:
     - base
+    - { role: ansible-users.python, version: "2.7.14" }
+    - { role: ansible-users.python, version: "3.6.4" }
     - avahi
     - geerlingguy.docker
     - geerlingguy.java

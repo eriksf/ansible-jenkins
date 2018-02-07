@@ -1,7 +1,7 @@
 ---
 
 jenkins_release_line: 'long_term_support'
-jenkins_release_update: false
+jenkins_release_update: true
 jenkins_admin_username: admin
 jenkins_admin_password: admin
 jenkins_admin_email: eferlanti@tacc.utexas.edu

@@ -1,0 +1,11 @@
+- name: Download get-pip.py
+  get_url:
+    url: https://bootstrap.pypa.io/get-pip.py
+    dest: /usr/local/src/get-pip.py
+    validate_certs: no
+  tags:
+    - download
+
+
+- name: Execute get-pip.py
+  shell: "{{ python_exe }} /usr/local/src/get-pip.py"

@@ -1,0 +1,19 @@
+
+- name: Link to {{ python_link }}. force ? {{ 'yes' if reinstall else 'no' }}
+  file:
+    src: "{{ python_exe }}"
+    dest: "{{ python_link }}"
+    state: link
+    force: "{{ 'yes' if reinstall else 'no' }}"
+  tags:
+    - link
+
+
+- name: Link to {{ pip_link }}. force ? {{ 'yes' if reinstall else 'no' }}
+  file:
+    src: "{{ pip_exe }}"
+    dest: "{{ pip_link }}"
+    state: link
+    force: "{{ 'yes' if reinstall else 'no' }}"
+  tags:
+    - link

@@ -76,6 +76,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "ansible" do |ansible|
       ansible.playbook = "vagrant.yml"
       ansible.host_key_checking = false
-      ansible.verbose = "v"
+      ansible.verbose = "vv"
   end
 end

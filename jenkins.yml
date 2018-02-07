@@ -4,7 +4,7 @@
   hosts: all
   become: yes
   become_user: root
-  remote_user: root
+  remote_user: centos
   vars:
     - update_cache: yes
     - jenkins_url_external: jenkins.sd2e.org
@@ -12,6 +12,8 @@
 
   roles:
     - base
+    - { role: ansible-users.python, version: "2.7.14" }
+    - { role: ansible-users.python, version: "3.6.4" }
     - geerlingguy.docker
     - geerlingguy.java
     - karlmdavis.jenkins2
