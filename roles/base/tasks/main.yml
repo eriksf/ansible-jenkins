@@ -32,3 +32,4 @@
 
 - name: Configure SELinux to allow httpd to connect to 127.0.0.1
   seboolean: name=httpd_can_network_connect state=yes persistent=yes
+  when: ansible_selinux is defined and ansible_selinux.status == "enabled"
