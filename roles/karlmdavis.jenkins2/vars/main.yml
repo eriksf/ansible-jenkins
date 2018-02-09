@@ -8,6 +8,7 @@ jenkins_admin_email: eferlanti@tacc.utexas.edu
 
 jenkins_plugins_extra:
   - ansible
+  - batch-task
   - blueocean
   - build-pipeline-plugin
   - checkstyle
@@ -16,6 +17,7 @@ jenkins_plugins_extra:
   - disk-usage
   - external-monitor-job
   - favorite
+  - ghprb
   - greenballs
   - groovy
   - icon-shim
@@ -33,3 +35,4 @@ jenkins_plugins_extra:
   - slack
   - testng-plugin
   - variant
+  - view-job-filters
