@@ -12,6 +12,7 @@ jenkins_plugins_extra:
   - blueocean
   - build-pipeline-plugin
   - checkstyle
+  - cobertura
   - copyartifact
   - deploy
   - disk-usage
@@ -36,3 +37,4 @@ jenkins_plugins_extra:
   - testng-plugin
   - variant
   - view-job-filters
+  - warnings
