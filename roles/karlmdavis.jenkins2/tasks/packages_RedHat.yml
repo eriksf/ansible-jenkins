@@ -60,3 +60,9 @@
       line: "JENKINS_ARGS=\"--prefix={{ jenkins_context_path }}\""
   notify:
     - "Restart Service 'jenkins'"
+
+- name: Adding jenkins user to group docker
+  user: name=jenkins
+        groups=docker
+        append=yes
+  become: true
