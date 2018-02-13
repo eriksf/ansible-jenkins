@@ -11,6 +11,7 @@ jenkins_plugins_extra:
   - batch-task
   - blueocean
   - build-pipeline-plugin
+  - buildtriggerbadge
   - checkstyle
   - cobertura
   - copyartifact
@@ -27,6 +28,7 @@ jenkins_plugins_extra:
   - mailer
   - maven-plugin
   - metrics
+  - monitoring
   - parameterized-trigger
   - pegdown-formatter
   - pubsub-light
