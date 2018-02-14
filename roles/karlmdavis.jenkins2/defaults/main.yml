@@ -84,3 +84,18 @@ jenkins_packages_url_base: 'https://pkg.jenkins.io'
 
 # Set to `true` to add a `proxy: _none_` setting for the YUM repo.
 jenkins_packages_repo_yum_disable_proxy: false
+
+# If `true`, set up Jenkins to use LDAP authentication
+jenkins_use_ldap: false
+jenkins_ldap_admin_user: ''
+jenkins_ldap_server: ''
+jenkins_ldap_root_dn: ''
+jenkins_ldap_user_search_base: ''
+jenkins_ldap_user_search: ''
+jenkins_ldap_group_search_base: ''
+jenkins_ldap_manager_dn: ''
+jenkins_ldap_manager_password: ''
+jenkins_ldap_inhibit_infer_root_dn: false
+
+# The Jenkins admin email address
+jenkins_admin_email: ''

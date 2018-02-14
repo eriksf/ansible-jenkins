@@ -8,6 +8,7 @@
   vars:
     - update_cache: yes
     - jenkins_url_external: jenkins.local
+    - jenkins_use_ldap: true
 
   roles:
     - base

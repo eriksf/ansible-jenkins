@@ -84,6 +84,15 @@
         println "Changed: external URL."
       }
 
+      // Set the Jenkins system admin email, if defined.
+      def adminEmail = "{{ jenkins_admin_email }}"
+      println("Configuring Jenkins Admin Email (current value: '${locationConfig.adminAddress}', target value: '${adminEmail}')...")
+      if (adminEmail != '' || adminEmail != locationConfig.adminAddress) {
+          locationConfig.adminAddress = adminEmail
+          locationConfig.save()
+          println "Changed: admin email address."
+      }
+
       // Set the Jenkins proxy config, if defined.
       def proxyName = "{{ jenkins_http_proxy_server | default('') | trim }}"
       def proxyPortText = "{{ jenkins_http_proxy_port | default('') | trim }}"
@@ -207,6 +216,54 @@
       }
   register: shell_jenkins_security
   changed_when: "(shell_jenkins_security | success) and 'Changed' not in shell_jenkins_security.output"
+
+- name: Configure LDAP authentication
+  jenkins_script:
+    url: "{{ jenkins_url_local }}"
+    user: "{{ jenkins_dynamic_admin_username | default(omit) }}"
+    password: "{{ jenkins_dynamic_admin_password | default(omit) }}"
+    script: |
+      // These are the basic imports that Jenkin's interactive script console
+      // automatically includes.
+      import jenkins.*;
+      import jenkins.model.*;
+      import hudson.security.*;
+      import org.jenkinsci.plugins.*
+
+      // Add an admin user for LDAP
+      def strategy = Jenkins.instance.getAuthorizationStrategy()
+      strategy.add(Jenkins.instance.ADMINISTER, "{{ jenkins_ldap_admin_user }}")
+      Jenkins.instance.setAuthorizationStrategy(strategy)
+      Jenkins.instance.save()
+      println "Updated authorization."
+
+      def server = '{{ jenkins_ldap_server }}'
+      def rootDN = '{{ jenkins_ldap_root_dn }}'
+      def userSearchBase = '{{ jenkins_ldap_user_search_base }}'
+      def userSearch = '{{ jenkins_ldap_user_search }}'
+      def groupSearchBase = '{{ jenkins_ldap_group_search_base }}'
+      def managerDN = '{{ jenkins_ldap_manager_dn }}'
+      def managerPassword = '{{ jenkins_ldap_manager_password }}'
+      def inhibitInferRootDNStr = '{{ jenkins_ldap_inhibit_infer_root_dn }}'
+      def inhibitInferRootDN = false
+      if (inhibitInferRootDNStr != 'false') {
+          inhibitInferRootDN = true
+      }
+
+      SecurityRealm ldap_realm = new LDAPSecurityRealm(server,
+                                                       rootDN,
+                                                       userSearchBase,
+                                                       userSearch,
+                                                       groupSearchBase,
+                                                       managerDN,
+                                                       managerPassword,
+                                                       inhibitInferRootDN)
+      Jenkins.instance.setSecurityRealm(ldap_realm)
+      Jenkins.instance.save()
+      println "Changed security realm to LDAP."
+  register: shell_jenkins_ldap
+  changed_when: "(shell_jenkins_ldap | success) and 'Changed' not in shell_jenkins_ldap.output"
+  when: jenkins_use_ldap
 
 # Fire any pending restart handlers now, or else the tests below here may not
 # be valid.

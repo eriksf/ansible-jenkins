@@ -9,6 +9,7 @@
     - update_cache: yes
     - jenkins_url_external: jenkins.sd2e.org
     - jenkins_home: '/jenkins/home'
+    - jenkins_use_ldap: false
 
   roles:
     - base

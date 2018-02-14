@@ -5,6 +5,9 @@ jenkins_release_update: true
 jenkins_admin_username: admin
 jenkins_admin_password: admin
 jenkins_admin_email: eferlanti@tacc.utexas.edu
+jenkins_ldap_admin_user: eriksf
+jenkins_ldap_server: 'ldaps://ldap.tacc.utexas.edu:636'
+jenkins_ldap_root_dn: 'ou=people,dc=tacc,dc=utexas,dc=edu'
 
 jenkins_plugins_extra:
   - ansible
