@@ -1,0 +1,8 @@
+---
+
+nodejs_npm_global_packages:
+  - yarn
+  - grunt
+  - gulp
+  - jshint
+  - mocha

@@ -32,6 +32,7 @@ jenkins_plugins_extra:
   - maven-plugin
   - metrics
   - monitoring
+  - nodejs
   - parameterized-trigger
   - pegdown-formatter
   - pubsub-light
