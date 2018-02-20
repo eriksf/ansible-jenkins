@@ -20,6 +20,9 @@ jenkins_plugins_extra:
   - copyartifact
   - deploy
   - disk-usage
+  - docker-build-step
+  - envinject
+  - exclusive-execution
   - external-monitor-job
   - favorite
   - ghprb

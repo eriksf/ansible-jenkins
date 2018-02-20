@@ -56,6 +56,7 @@ Vagrant.configure("2") do |config|
   #
   config.vm.provider "virtualbox" do |vb|
       vb.customize ["modifyvm", :id, "--name", "Jenkins", "--memory", "2048"]
+      vb.customize ['guestproperty', 'set', :id, '/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold', 10000]
   #   # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
   #
