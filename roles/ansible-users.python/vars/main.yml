@@ -5,3 +5,6 @@ checksum: null
 python_dir: /usr/local/opt/python{{ version }}
 reinstall: false
 link: true
+python_packages:
+  - virtualenv
+  - pytest

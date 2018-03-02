@@ -39,6 +39,7 @@ jenkins_plugins_extra:
   - parameterized-trigger
   - pegdown-formatter
   - pubsub-light
+  - pyenv-pipeline
   - run-condition
   - saferestart
   - shiningpanda

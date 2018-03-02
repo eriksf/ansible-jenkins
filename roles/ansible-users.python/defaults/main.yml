@@ -75,3 +75,5 @@ require_packages:
     - zlib1g-dev
     - libbz2-dev
     - libgdbm-dev
+
+python_packages: []

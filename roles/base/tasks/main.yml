@@ -25,6 +25,7 @@
     - libsemanage-python
     - git
     - glances
+    - jq
     - mailx
     - maven
     - wget

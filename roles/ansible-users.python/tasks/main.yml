@@ -42,6 +42,11 @@
   static: no
   when: link == True
 
+- name: Install python packages with pip.
+  pip:
+    name: "{{ python_packages | join(' ') }}"
+    executable: "{{ pip_exe }}"
+
 
 - name: Finish.
   debug:
