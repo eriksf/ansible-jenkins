@@ -28,6 +28,8 @@
     - jq
     - mailx
     - maven
+    - raptor2
+    - raptor2-devel
     - wget
   tags: packages
 

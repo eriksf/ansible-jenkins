@@ -21,11 +21,16 @@ jenkins_plugins_extra:
   - deploy
   - disk-usage
   - docker-build-step
+  - dockerhub-notification
   - envinject
   - exclusive-execution
   - external-monitor-job
   - favorite
   - ghprb
+  - gitlab-hook
+  - gitlab-logo
+  - gitlab-merge-request-jenkins
+  - gitlab-plugin
   - greenballs
   - groovy
   - icon-shim
